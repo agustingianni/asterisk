@@ -3489,7 +3489,11 @@ static void main_atexit(void)
 	ast_cli_unregister_multiple(cli_asterisk, ARRAY_LEN(cli_asterisk));
 }
 
+#ifdef HFND_FUZZING_ENTRY_FUNCTION
+HFND_FUZZING_ENTRY_FUNCTION(int argc, char **argv)
+#else
 int main(int argc, char *argv[])
+#endif
 {
 	int c;
 	int x;
